@@ -165,6 +165,17 @@ h3 { font-size: clamp(20px, 2.2vw, 24px); font-weight: 800; }
   margin-left: 1px;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ==================== HERO CINEMATOGRÁFICO ==================== */
 .creator-sec { padding: 0; overflow: hidden; background: var(--ink); }
 .creator-panel {
@@ -204,6 +215,121 @@ h3 { font-size: clamp(20px, 2.2vw, 24px); font-weight: 800; }
   padding: 70px 0 70px 4vw;
 }
 .creator-inner { width: 100%; max-width: 640px; }
+
+/* Efecto Máquina de Escribir (Typewriter) */
+.typewriter-box {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-left: 5px solid #10b981;
+  padding: 20px 24px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(16, 185, 129, 0.15);
+  backdrop-filter: blur(16px);
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.typewriter-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #34d399;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.typewriter-content {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(17.5px, 2vw, 21px);
+  font-weight: 700;
+  color: #fde68a;
+  line-height: 1.45;
+  min-height: 58px;
+}
+
+.tw-cursor {
+  display: inline-block;
+  color: #10b981;
+  font-weight: 300;
+  animation: blink 0.8s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-box.finished-state {
+  border-color: rgba(52, 211, 153, 0.8) !important;
+  border-left: 5px solid #34d399 !important;
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.35) !important;
+  transition: all 0.5s ease;
+}
+.typewriter-box.finished-state .tw-text {
+  color: #6ee7b7 !important;
+}
+
+.scroll-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-cue.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-cue-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #34d399;
+}
+
+.scroll-cue-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: #34d399;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 800;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+  animation: bounceDown 1.8s infinite ease-in-out;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.hero-bridge-h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(26px, 3.4vw, 42px);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #fff;
+  margin-bottom: 20px;
+}
 .c-h2 {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
@@ -507,23 +633,36 @@ footer p { font-size: 14.5px; font-weight: 500; color: #94a3b8; }
     
     <div class="creator-text">
       <div class="creator-inner">
-        <span class="kicker">Claridad y Desahogo Operativo</span>
-        <h1 class="c-h2">Si sentís que tu actividad o negocio depende de que estés <span class="grad-warm">encima de todo</span> para no frenarse, hablemos.</h1>
-        <p class="c-lead">
-          Soy <strong>Franco Zappetti</strong>. Ayudo a profesionales, consultorios, estudios y empresas de servicios a desatar el nudo administrativo y de atención diaria. Ordenamos tus mensajes, turnos, presupuestos y consultas repetitivas para que tu estructura funcione con fluidez y <span class="hl-ochre">recuperes tu tranquilidad</span>.
+        <span class="kicker">Alivio y Orden Operativo</span>
+        
+        <!-- Efecto Máquina de Escribir (Typewriter) -->
+        <div class="typewriter-box">
+          <div class="typewriter-label">
+            <span class="tw-icon">💭</span> ¿Te pasa seguido que...?
+          </div>
+          <div class="typewriter-content">
+            <span id="typewriterText" class="tw-text"></span><span class="tw-cursor">|</span>
+          </div>
+        </div>
+
+        <h1 class="hero-bridge-h1">
+          No necesitás trabajar más horas.<br>
+          <span class="grad-warm">Necesitás que tu operativa fluya sola.</span>
+        </h1>
+
+        <p class="c-lead" style="margin-bottom: 24px; font-size: 18.5px; color: #f1f5f9; line-height: 1.65;">
+          Ayudo a consultorios, firmas profesionales y organizaciones a ordenar su atención diaria, citas y procesos repetitivos. Sin sistemas complejos: todo integrado a tu WhatsApp y forma de trabajo habitual.
         </p>
-        <ul class="c-bullets">
-          <li><strong>Atención y trámites sin demora:</strong> Respuestas inmediatas a consultas frecuentes, recepción de documentación y cotizaciones <span class="hl-pink">las 24 horas</span>.</li>
-          <li><strong>Cero sistemas raros:</strong> No tenés que aprender tecnología ni cambiar tu forma de trabajar. Todo se adapta a tu <span class="hl-emerald">WhatsApp y herramientas de siempre</span>.</li>
-          <li><strong>Coordinación automática:</strong> Turnos, pedidos y solicitudes cargados solos en tus planillas para que tu equipo no pierda tiempo en tareas manuales.</li>
-        </ul>
+        
         <div class="c-sig">
           <div class="c-sig-av">FZ</div>
           <div>
             <div class="c-sig-name">Franco Zappetti</div>
-            <div class="c-sig-sub">Simplificación y Automatización de Procesos</div>
+            <div class="c-sig-sub">Simplificación & Procesos Fluidos</div>
           </div>
-          <a class="btn btn-warm" href="#contacto" style="margin-left: auto;">Escribirme por WhatsApp</a>
+          <a class="btn btn-warm" href="#contacto" style="margin-left: auto; font-size: 17px; padding: 15px 28px;">
+            Charlemos 20 minutos por WhatsApp ➔
+          </a>
         </div>
       </div>
     </div>
@@ -531,9 +670,15 @@ footer p { font-size: 14.5px; font-weight: 500; color: #94a3b8; }
 </section>
 
 <!-- MANIFIESTO -->
-<div class="quote-strip">
-  <div class="wrap">
+<div id="manifiesto" class="quote-strip">
+  <div class="wrap" style="position: relative;">
     <p>“Organizar tu negocio no es un costo extra.<br><span class="grad-warm">Es la única forma de que crezca sin atraparte a vos adentro.”</span></p>
+    
+    <!-- Indicador animado de scroll hacia abajo -->
+    <div class="scroll-cue">
+      <span class="scroll-cue-text">Seguí descubriendo cómo resolverlo</span>
+      <div class="scroll-cue-arrow">↓</div>
+    </div>
   </div>
 </div>
 
@@ -684,7 +829,74 @@ footer p { font-size: 14.5px; font-weight: 500; color: #94a3b8; }
 </footer>
 
 <script>
+const typewriterPhrases = [
+  "Te acostás pensando en todo lo que te quedó pendiente y que el tiempo no te alcanza.",
+  "Sentís que si no estás encima de cada mensaje o trámite, todo se frena.",
+  "Tu equipo pierde horas respondiendo siempre lo mismo o pasando datos a mano.",
+  "No tenés que seguir así. Hay una forma mucho más simple de trabajar."
+];
+
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+  const textElement = document.getElementById("typewriterText");
+  const cursorElement = document.querySelector(".tw-cursor");
+  const boxElement = document.querySelector(".typewriter-box");
+  if (!textElement) return;
+
+  const currentPhrase = typewriterPhrases[phraseIndex];
+  const isLastPhrase = (phraseIndex === typewriterPhrases.length - 1);
+
+  if (isDeleting) {
+    textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  let typeSpeed = isDeleting ? 25 : 45;
+
+  // Frase completada
+  if (!isDeleting && charIndex === currentPhrase.length) {
+    if (isLastPhrase) {
+      // CIERRE DEFINITIVO: Detiene el bucle y resalta el alivio
+      if (cursorElement) cursorElement.style.display = 'none';
+      if (boxElement) {
+        boxElement.classList.add('finished-state');
+      }
+      
+      // Desplazamiento suave hacia el Manifiesto tras 1.8 segundos de lectura
+      setTimeout(() => {
+        const manifestoSec = document.getElementById('manifiesto');
+        if (manifestoSec) {
+          manifestoSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // Revelar la flecha de invitación al scroll tras llegar a la franja
+          setTimeout(() => {
+            const cue = document.querySelector('.scroll-cue');
+            if (cue) cue.classList.add('visible');
+          }, 900);
+        }
+      }, 1800);
+      return; // Fin de la ejecución, no repite
+    }
+
+    typeSpeed = 2200; // Pausa de lectura en frases intermedias
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex++;
+    typeSpeed = 400;
+  }
+
+  setTimeout(typeEffect, typeSpeed);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Acordeón FAQ
   const faqItems = document.querySelectorAll('.faq-item-3d');
   faqItems.forEach(item => {
     const btn = item.querySelector('.faq-btn');
@@ -694,6 +906,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  // Efecto Máquina de Escribir (Lineal)
+  typeEffect();
 });
 </script>
 </body>
