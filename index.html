@@ -176,13 +176,23 @@ h3 { font-size: clamp(20px, 2.2vw, 24px); font-weight: 800; }
   }
 }
 
-/* ==================== HERO CINEMATOGRÁFICO ==================== */
-.creator-sec { padding: 0; overflow: hidden; background: var(--ink); }
+/* ==================== HERO CINEMATOGRÁFICO (100dvh FIT) ==================== */
+.creator-sec {
+  min-height: calc(100dvh - 90px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--ink);
+}
 .creator-panel {
   position: relative;
-  min-height: 720px;
+  width: 100%;
+  min-height: calc(100dvh - 90px);
   display: flex;
-  align-items: stretch;
+  align-items: center;
 }
 .creator-bg {
   position: absolute;
@@ -212,21 +222,21 @@ h3 { font-size: clamp(20px, 2.2vw, 24px); font-weight: 800; }
   z-index: 2;
   display: flex;
   align-items: center;
-  padding: 70px 0 70px 4vw;
+  padding: 30px 0 30px 4vw;
 }
 .creator-inner { width: 100%; max-width: 640px; }
 
-/* Efecto Máquina de Escribir (Typewriter) */
+/* Efecto Máquina de Escribir (Typewriter) - Ajuste Compacto */
 .typewriter-box {
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid rgba(16, 185, 129, 0.4);
   border-left: 5px solid #10b981;
-  padding: 20px 24px;
-  border-radius: 16px;
-  margin-bottom: 24px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  margin-bottom: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(16, 185, 129, 0.15);
   backdrop-filter: blur(16px);
-  min-height: 110px;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -324,52 +334,64 @@ h3 { font-size: clamp(20px, 2.2vw, 24px); font-weight: 800; }
 
 .hero-bridge-h1 {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(26px, 3.4vw, 42px);
+  font-size: clamp(24px, 3.2vw, 38px);
   font-weight: 800;
   line-height: 1.25;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 .c-h2 {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
-  font-size: clamp(26px, 3.4vw, 42px);
+  font-size: clamp(24px, 3.2vw, 38px);
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 .c-lead {
-  font-size: 19px;
+  font-size: clamp(15px, 1.8vw, 17px);
   font-weight: 500;
   color: #f1f5f9;
-  margin-bottom: 24px;
-  line-height: 1.7;
+  margin-bottom: 16px;
+  line-height: 1.45;
+  max-width: 780px;
 }
-.c-bullets { list-style: none; display: grid; gap: 16px; margin: 0 0 28px; }
+.c-bullets { list-style: none; display: grid; gap: 12px; margin: 0 0 20px; }
 .c-bullets li {
-  font-size: 17.5px;
+  font-size: 16px;
   font-weight: 500;
   color: #e2e8f0;
-  line-height: 1.6;
-  padding-left: 26px;
+  line-height: 1.5;
+  padding-left: 24px;
   position: relative;
 }
 .c-bullets li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 10px;
-  width: 9px;
-  height: 9px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--pink);
-  box-shadow: 0 0 12px var(--pink);
+  box-shadow: 0 0 10px var(--pink);
+}
+
+.c-action-block {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.btn-hero-pulse {
+  padding: 12px 26px !important;
+  font-size: 16px !important;
 }
 
 .c-sig {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-top: 28px;
+  gap: 12px;
+  margin-top: 4px;
   flex-wrap: wrap;
 }
 .c-sig-av {
@@ -683,10 +705,11 @@ footer p { font-size: 14.5px; font-weight: 500; color: #94a3b8; }
   .nav-inner { height: 74px; }
   .brand-top-iso { width: 42px; height: 42px; }
   .brand-top-text { font-size: 20px; }
+  .creator-sec { min-height: auto; padding: 12px 0; }
   .creator-panel { flex-direction: column; min-height: auto; }
-  .creator-bg { position: relative; width: 100%; height: 320px; object-position: center 20%; }
+  .creator-bg { position: relative; width: 100%; height: 250px; object-position: center 20%; }
   .creator-fade { background: linear-gradient(to bottom, rgba(8, 13, 26, 0) 0%, rgba(8, 13, 26, 1) 90%); }
-  .creator-text { width: 100%; padding: 40px 5vw; }
+  .creator-text { width: 100%; padding: 20px 5vw; }
   .forwho-grid { grid-template-columns: 1fr; }
 }
 </style>
@@ -718,7 +741,7 @@ footer p { font-size: 14.5px; font-weight: 500; color: #94a3b8; }
     
     <div class="creator-text">
       <div class="creator-inner">
-        <span class="kicker">Alivio y Orden Operativo</span>
+        <span class="kicker">Simplificación & Orden de Trabajo</span>
         
         <!-- Efecto Máquina de Escribir (Typewriter) -->
         <div class="typewriter-box">
@@ -730,15 +753,16 @@ footer p { font-size: 14.5px; font-weight: 500; color: #94a3b8; }
           </div>
         </div>
 
+        <!-- TITULAR H1: OPCIÓN 3 - CLARO, DIRECTO Y BAJADO A TIERRA -->
         <h1 class="hero-bridge-h1">
-          No necesitás trabajar más horas.<br>
-          <span class="grad-warm">Necesitás que tu operativa fluya sola.</span>
+          Hago que las tareas que hoy te quitan tiempo se resuelvan solas<br>
+          <span class="grad-warm">para que tu actividad avance sin demandar tu atención constante.</span>
         </h1>
 
         <p class="c-lead" style="margin-bottom: 24px; font-size: 18.5px; color: #f1f5f9; line-height: 1.65;">
-          Ayudo a consultorios, firmas profesionales y organizaciones a ordenar su atención diaria, citas y procesos repetitivos. Sin sistemas complejos: todo integrado a tu WhatsApp y forma de trabajo habitual.
+          Analizamos juntos tus rutinas diarias y armamos un circuito a medida para responder consultas, coordinar agendas y organizar tus gestiones de forma automática, prolija y sin programas raros.
         </p>
-        
+
         <div class="c-action-block" style="margin-top: 24px; display: flex; flex-direction: column; gap: 16px;">
           <a class="btn btn-warm btn-hero-pulse" href="https://wa.me/5493513442466?text=Hola%20Franco,%20estuve%20viendo%20la%20propuesta%20de%20EcoPracTIA%20y%20me%20gustar%C3%ADa%20coordinar%20la%20charla%20de%20diagn%C3%B3stico%20de%2020%20minutos." target="_blank" style="font-size: 18px; padding: 16px 32px; text-align: center; justify-content: center; box-shadow: 0 8px 25px rgba(245, 158, 11, 0.35);">
             Charlemos 20 minutos por WhatsApp ➔
