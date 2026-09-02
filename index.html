@@ -487,51 +487,77 @@ h3 { font-size: clamp(20px, 2.2vw, 24px); font-weight: 800; }
 .c-sig-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; line-height: 1.2; color: #fff; }
 .c-sig-sub { font-size: 11px; line-height: 1.2; font-weight: 500; color: #cbd5e1; }
 
+/* ==================== PLIEGO 2 UNIFICADO ==================== */
+.pliego-2-wrap {
+  min-height: calc(100dvh - 65px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #080d1a;
+  box-sizing: border-box;
+}
+
 /* ==================== STRIP DE MANIFIESTO ==================== */
 .quote-strip {
-  padding: 42px 0;
+  padding: 40px 20px 20px 20px;
+  scroll-margin-top: 75px;
   border-top: 1px solid var(--border-dark);
   border-bottom: 1px solid var(--border-dark);
   background: linear-gradient(90deg, rgba(245, 158, 11, 0.1), rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
   text-align: center;
+  position: relative;
+}
+.quote-strip p, .quote-strip .wrap {
+  max-width: 1040px;
+  margin: 0 auto;
 }
 .quote-strip p {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(20px, 2.5vw, 28px);
-  font-weight: 800;
+  line-height: 1.25;
+}
+.quote-line-1 {
+  font-size: clamp(23px, 2.6vw, 32px);
+  font-weight: 700;
+  line-height: 1.25;
   color: #ffffff;
-  max-width: 920px;
-  margin: 0 auto;
-  line-height: 1.45;
+}
+.quote-line-2 {
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  display: block;
+  margin-top: 10px;
 }
 
 /* ==================== SECCIÓN DE RUBROS (ABARCATIVO) ==================== */
 .sectors-sec {
-  background: var(--ink-surface);
-  padding: 60px 0;
+  background-color: #080d1a;
+  padding: 10px 20px 32px 20px;
+  margin-top: 0;
+  margin-bottom: 0;
   border-bottom: 1px solid var(--border-dark);
 }
 .sectors-title {
   text-align: center;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .12em;
+  letter-spacing: 0.08em;
   color: #94a3b8;
-  margin-bottom: 28px;
+  margin-bottom: 14px;
 }
 .sectors-grid {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 10px;
 }
 .sector-badge {
-  padding: 10px 20px;
+  padding: 8px 14px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 15.5px;
+  font-size: 13.5px;
   font-weight: 600;
   color: #e2e8f0;
   display: flex;
@@ -867,36 +893,39 @@ footer p { font-size: 14.5px; font-weight: 500; color: #94a3b8; }
   </div>
 </section>
 
-<!-- MANIFIESTO -->
-<div id="manifiesto" class="quote-strip">
-  <div class="wrap" style="position: relative;">
-    <p>
-      <span style="color: #ffffff; font-size: clamp(26px, 3.2vw, 38px); font-weight: 700;">“Organizar tu negocio no es un costo extra,</span>
-      <span class="grad-warm" style="font-size: clamp(28px, 3.6vw, 44px); font-weight: 800; display: block; margin-top: 6px;">es la única forma de que crezcas sin atraparte a vos adentro.”</span>
-    </p>
-    
-    <!-- Indicador animado de scroll hacia abajo -->
-    <a href="#soluciones" class="scroll-cue" style="text-decoration: none; cursor: pointer;">
-      <span class="scroll-cue-text">Seguí descubriendo cómo resolverlo</span>
-      <div class="scroll-cue-arrow">↓</div>
-    </a>
-  </div>
-</div>
-
-<!-- SECTOR GRID: ABARCATIVO A MÚLTIPLES RUBROS -->
-<section class="sectors-sec">
-  <div class="wrap">
-    <div class="sectors-title">Soluciones adaptadas a la dinámica real de tu rubro</div>
-    <div class="sectors-grid">
-      <div class="sector-badge"><span>🩺</span> Consultorios y Salud</div>
-      <div class="sector-badge"><span>🏢</span> Inmobiliarias y Alquileres</div>
-      <div class="sector-badge"><span>⚖️</span> Estudios Jurídicos y Contables</div>
-      <div class="sector-badge"><span>🏋️</span> Gimnasios, Clubes y Academias</div>
-      <div class="sector-badge"><span>🛋️</span> Mueblerías y Fabricantes</div>
-      <div class="sector-badge"><span>📦</span> Empresas de Servicios y Logística</div>
+<!-- PLIEGO 2 UNIFICADO -->
+<div class="pliego-2-wrap">
+  <!-- MANIFIESTO -->
+  <div id="manifiesto" class="quote-strip">
+    <div class="wrap" style="position: relative;">
+      <p>
+        <span class="quote-line-1">“Organizar tu negocio no es un costo extra,</span>
+        <span class="grad-warm quote-line-2">es la única forma de que crezcas sin atraparte a vos adentro.”</span>
+      </p>
+      
+      <!-- Indicador animado de scroll hacia abajo -->
+      <a href="#soluciones" class="scroll-cue" style="text-decoration: none; cursor: pointer;">
+        <span class="scroll-cue-text">Seguí descubriendo cómo resolverlo</span>
+        <div class="scroll-cue-arrow">↓</div>
+      </a>
     </div>
   </div>
-</section>
+
+  <!-- SECTOR GRID: ABARCATIVO A MÚLTIPLES RUBROS -->
+  <section class="sectors-sec">
+    <div class="wrap">
+      <div class="sectors-title">Soluciones adaptadas a la dinámica real de tu rubro</div>
+      <div class="sectors-grid">
+        <div class="sector-badge"><span>🩺</span> Consultorios y Salud</div>
+        <div class="sector-badge"><span>🏢</span> Inmobiliarias y Alquileres</div>
+        <div class="sector-badge"><span>⚖️</span> Estudios Jurídicos y Contables</div>
+        <div class="sector-badge"><span>🏋️</span> Gimnasios, Clubes y Academias</div>
+        <div class="sector-badge"><span>🛋️</span> Mueblerías y Fabricantes</div>
+        <div class="sector-badge"><span>📦</span> Empresas de Servicios y Logística</div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <!-- TARJETAS CLARAS 3D: LOS 3 PILARES DEL ALIVIO OPERATIVO -->
 <section id="soluciones" class="sec light-sec">
