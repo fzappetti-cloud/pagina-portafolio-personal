@@ -668,10 +668,14 @@ h3 { font-size: clamp(20px, 2.2vw, 24px); font-weight: 800; }
 }
 
 /* ==================== CRITERIOS DE COMPATIBILIDAD ==================== */
-.forwho-sec { background: var(--ink-surface); }
-.forwho-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 40px; }
+.forwho-sec {
+  background: var(--ink-surface);
+  padding: 42px 0 46px 0;
+  scroll-margin-top: 75px;
+}
+.forwho-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 30px; }
 .fw-card-3d {
-  padding: 38px 32px;
+  padding: 26px 24px;
   border-radius: 22px;
   background: #0b1222;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -679,20 +683,53 @@ h3 { font-size: clamp(20px, 2.2vw, 24px); font-weight: 800; }
 .fw-card-3d.yes { border: 1px solid rgba(16, 185, 129, 0.4); border-top: 5px solid var(--emerald); }
 .fw-card-3d.no { border: 1px solid rgba(236, 72, 153, 0.4); border-top: 5px solid var(--pink); }
 
-.fw-card-3d h3 { font-size: 23px; margin-bottom: 20px; }
+.fw-card-3d h3 { font-size: 21px; margin-bottom: 14px; }
 .fw-card-3d.yes h3 { color: #6ee7b7; }
 .fw-card-3d.no h3 { color: #f472b6; }
-.fw-list { list-style: none; display: grid; gap: 16px; }
-.fw-list li {
-  font-size: 17px;
-  font-weight: 500;
-  color: #e2e8f0;
-  padding-left: 28px;
-  position: relative;
-  line-height: 1.6;
+
+.fw-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
-.fw-card-3d.yes .fw-list li::before { content: '✓'; position: absolute; left: 0; color: #6ee7b7; font-weight: 800; font-size: 20px; }
-.fw-card-3d.no .fw-list li::before { content: '✕'; position: absolute; left: 0; color: #f472b6; font-weight: 800; font-size: 20px; }
+.fw-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+.fw-icon-check {
+  color: #34d399;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.2;
+}
+.fw-icon-cross {
+  color: #f472b6;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.2;
+}
+.fw-item-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  margin: 0 0 3px 0;
+  line-height: 1.3;
+}
+.text-green { color: #34d399; }
+.text-pink { color: #f472b6; }
+.fw-item-desc {
+  font-size: 13.5px;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.35;
+}
 
 /* ==================== FAQ ACORDEÓN & PLACA DE COMPROMISO ==================== */
 .faq-sec { background: var(--ink); }
@@ -988,12 +1025,11 @@ footer p { font-size: 14.5px; font-weight: 500; color: #94a3b8; }
 </section>
 
 <!-- CRITERIOS DE COMPATIBILIDAD -->
-<section class="sec forwho-sec">
+<section id="para-quien" class="sec forwho-sec">
   <div class="wrap">
-    <div style="text-align: center; max-width: 680px; margin: 0 auto;">
-      <span class="kicker">Cero Falsas Expectativas</span>
-      <h2>Para quién es y para quién no</h2>
-      <p style="font-size: 18.5px; font-weight: 500; color: #cbd5e1; margin-top: 12px;">Para trabajar bien, prefiero ser 100% transparente desde el primer minuto.</p>
+    <div style="text-align: center; max-width: 760px; margin: 0 auto;">
+      <h2>Para quién es y para quién no esta propuesta</h2>
+      <p class="sec-lead" style="font-size: 17px; font-weight: 500; color: #cbd5e1; margin-top: 10px; margin-bottom: 24px;">Criterios claros para trabajar alineados y con resultados reales desde el inicio.</p>
     </div>
     
     <div class="forwho-grid">
@@ -1001,14 +1037,26 @@ footer p { font-size: 14.5px; font-weight: 500; color: #94a3b8; }
       <div class="fw-card-3d yes">
         <h3>Esto es para vos si:</h3>
         <ul class="fw-list">
-          <li>
-            <strong>Atención y mensajes desbordados:</strong> Recibís un volumen alto de consultas diarias por mensajería o formularios y la respuesta inmediata se vuelve insostenible.
+          <li class="fw-item">
+            <span class="fw-icon-check">✓</span>
+            <div class="fw-content">
+              <h4 class="fw-item-title text-green">Tu actividad funciona, pero la operativa te satura</h4>
+              <p class="fw-item-desc">Tenés clientes y movimiento real, pero el soporte diario te frena.</p>
+            </div>
           </li>
-          <li>
-            <strong>Fuga de tiempo por tareas manuales:</strong> Tu equipo o personal pierde horas valiosas coordinando agendas, pasando datos a mano y respondiendo siempre lo mismo.
+          <li class="fw-item">
+            <span class="fw-icon-check">✓</span>
+            <div class="fw-content">
+              <h4 class="fw-item-title text-green">Dependés de la memoria y la carga manual</h4>
+              <p class="fw-item-desc">Los procesos se apoyan en esfuerzo humano y planillas dispersas.</p>
+            </div>
           </li>
-          <li>
-            <strong>Desorden en turnos y presupuestos:</strong> Se te traspapelan seguimientos o documentación porque la información queda atrapada en conversaciones sueltas sin un tablero claro.
+          <li class="fw-item">
+            <span class="fw-icon-check">✓</span>
+            <div class="fw-content">
+              <h4 class="fw-item-title text-green">Buscás previsibilidad para ganar tiempo libre</h4>
+              <p class="fw-item-desc">Entendés que ordenar circuitos te devuelve el control del negocio.</p>
+            </div>
           </li>
         </ul>
       </div>
@@ -1017,14 +1065,26 @@ footer p { font-size: 14.5px; font-weight: 500; color: #94a3b8; }
       <div class="fw-card-3d no">
         <h3>Esto NO es para vos si:</h3>
         <ul class="fw-list">
-          <li>
-            <strong>Buscás respuestas robóticas y frías:</strong> Querés un contestador genérico que incomode a tus clientes en lugar de un flujo adaptado a la calidez y el criterio de tu organización.
+          <li class="fw-item">
+            <span class="fw-icon-cross">✕</span>
+            <div class="fw-content">
+              <h4 class="fw-item-title text-pink">Buscás fórmulas mágicas de un día para el otro</h4>
+              <p class="fw-item-desc">Sin un negocio en marcha ni interés real en ordenar cómo operás.</p>
+            </div>
           </li>
-          <li>
-            <strong>No tenés procesos para ordenar:</strong> Buscás "soluciones milagrosas" de ingresos rápidos sin contar con una actividad, servicio o equipo en marcha.
+          <li class="fw-item">
+            <span class="fw-icon-cross">✕</span>
+            <div class="fw-content">
+              <h4 class="fw-item-title text-pink">Existe resistencia a modernizar hábitos</h4>
+              <p class="fw-item-desc">Preferís sostener circuitos burocráticos tradicionales.</p>
+            </div>
           </li>
-          <li>
-            <strong>Resistencia al orden digital:</strong> No tenés interés en centralizar la información básica de tus servicios, horarios o presupuestos en un flujo ordenado.
+          <li class="fw-item">
+            <span class="fw-icon-cross">✕</span>
+            <div class="fw-content">
+              <h4 class="fw-item-title text-pink">Esperás delegar sin involucrar criterio</h4>
+              <p class="fw-item-desc">Creés que un sistema resuelve todo sin la validación de tu equipo.</p>
+            </div>
           </li>
         </ul>
       </div>
